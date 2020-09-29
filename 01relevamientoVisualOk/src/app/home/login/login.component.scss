@@ -1,0 +1,35 @@
+.centrado{
+    width: 100vw;
+    height: 100vh;
+    flex: auto;
+    align-items: center;
+    }
+
+    #container {
+        text-align: center;
+      
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      body{
+          background: rgb(255, 250, 228);
+      }
+
+.card{
+    // --background:  rgb(17, 185, 193);
+    // background: rgba(56, 115, 175, 0.767);
+    background: rgb(250, 239, 189);
+}
+
+.error{
+    --background:  rgb(241, 56, 65);
+     color: whitesmoke;
+}
+
+.titulo{
+    --color:whitesmoke;
+}
