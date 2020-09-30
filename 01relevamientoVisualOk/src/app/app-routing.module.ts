@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SubirFotoComponent } from './componentes/subir-foto/subir-foto.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginComponent } from './home/login/login.component';
 // import { RegistroComponent } from './home/registro/registro.component';
@@ -9,6 +10,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'splash', pathMatch: 'full'},
   {path: 'home',loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),canActivate:[AuthGuard]},
   {path: 'login',component: LoginComponent},
+  {path: 'subirFoto',component: SubirFotoComponent},
   // {path: 'registro',component: RegistroComponent},
   // {path: '',component: HomePage},
   {path:'**', pathMatch:'full' ,redirectTo:'home'},

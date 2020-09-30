@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -19,12 +19,19 @@ import { environment } from '../environments/environment';
 
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './home/login/login.component';
+import { SubirFotoComponent } from './componentes/subir-foto/subir-foto.component';
+
+// import { Camera } from '@ionic-native/camera';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SubirFotoComponent
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   entryComponents: [],
   imports: [
@@ -42,8 +49,9 @@ import { LoginComponent } from './home/login/login.component';
   providers: [
     StatusBar,
     SplashScreen,
+    // Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

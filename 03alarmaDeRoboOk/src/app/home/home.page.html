@@ -1,4 +1,27 @@
-<ion-header [translucent]="true">
+<ion-content [fullscreen]=true>
+
+  <div id="container">
+
+    <div *ngIf="alarmaActiva">
+      <img (click)="desactivar()" class="pulsate-fwd mediaPagina centrado drop" src="../../assets/icono3color.png" alt="alarma" height="60%">
+      <div *ngIf="!quiereDesactivar">
+        <h4 class="texto">ACTIVADA</h4>
+    </div>
+    </div>
+
+
+<div *ngIf="!alarmaActiva">
+    <img (click)="activar()" class=" mediaPagina centrado drop" src="../../assets/Attention_dormir.png" alt="alarma" height="60%">
+  </div>
+
+
+  </div>
+
+</ion-content>
+
+
+
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Blank
@@ -21,4 +44,4 @@
   </div>
 
 
-</ion-content>
+</ion-content> -->
