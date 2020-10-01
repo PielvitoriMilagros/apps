@@ -18,6 +18,12 @@ import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './home/login/login.component';
 
+import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
+import { DeviceMotion,DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Flashlight } from '@ionic-native/flashlight/ngx';
 
 @NgModule({
   declarations: [
@@ -39,7 +45,13 @@ import { LoginComponent } from './home/login/login.component';
     StatusBar,
     SplashScreen,
     AlertController,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Gyroscope,
+    DeviceMotion,
+    AndroidPermissions,
+    Vibration,
+    Camera,
+    Flashlight
   ],
   bootstrap: [AppComponent]
 })

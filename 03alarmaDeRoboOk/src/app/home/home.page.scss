@@ -63,7 +63,8 @@ margin: auto;
 
 
 .alertPassword{
-  --background: rgb(130, 240, 185) ;
+  // --background: rgb(130, 240, 185) !important ;
+  background-color: rgb(130, 240, 185) !important ;
 }
 
 .alertError{
