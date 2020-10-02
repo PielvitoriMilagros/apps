@@ -4,7 +4,7 @@ import { AuthenticationService } from '../servicios/authentication.service';
 import { AlertController } from '@ionic/angular';
 import { UsuariosService } from '../servicios/usuarios.service';
 import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
-import { DeviceMotion,DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
@@ -33,27 +33,27 @@ export class HomePage {
 
   private subscription;
 
-  public audioIzq=new Audio();
-  public audioDer=new Audio();
-  public audioVer=new Audio();
-  public audioHor=new Audio();
+  public audioIzq = new Audio();
+  public audioDer = new Audio();
+  public audioVer = new Audio();
+  public audioHor = new Audio();
 
 
   // public xOrient:any;
   // public yOrient:any;
   // public zOrient:any;
   // public timestamp:any
-  public accX:any;
-  public accY:any;
-  public accZ:any;
+  public accX: any;
+  public accY: any;
+  public accZ: any;
 
 
-  constructor(private authService: AuthenticationService, 
+  constructor(private authService: AuthenticationService,
     private alertCtrl: AlertController, private user: UsuariosService,
-    private gyroscope:Gyroscope, private deviceMotion: DeviceMotion,
-    private androidPermissions:AndroidPermissions,
-    private vibration:Vibration, private camera:Camera,
-    private flashlight:Flashlight) {
+    private gyroscope: Gyroscope, private deviceMotion: DeviceMotion,
+    private androidPermissions: AndroidPermissions,
+    private vibration: Vibration, private camera: Camera,
+    private flashlight: Flashlight) {
 
     authService.currentUser().then(resp => {
       this.emailActivo = resp.email;
@@ -68,19 +68,19 @@ export class HomePage {
     });
 
     this.audioIzq.src = '../../../assets/sonidos/izquierda.mp3';
-    this.audioDer.src='../../../assets/sonidos/derecha.mp3';
-    this.audioVer.src='../../../assets/sonidos/vertical.mp3';
-    this.audioHor.src='../../../assets/sonidos/horizontal.mp3';
+    this.audioDer.src = '../../../assets/sonidos/derecha.mp3';
+    this.audioVer.src = '../../../assets/sonidos/vertical.mp3';
+    this.audioHor.src = '../../../assets/sonidos/horizontal.mp3';
 
     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
       result => {
-        console.log('Has permission?',result.hasPermission);
-        if(!result.hasPermission)
+        console.log('Has permission?', result.hasPermission);
+        if (!result.hasPermission)
           this.androidPermissions.requestPermissions(this.androidPermissions.PERMISSION.CAMERA);
       },
       err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
     );
-    
+
 
 
 
@@ -89,7 +89,7 @@ export class HomePage {
 
   activar() {
     this.alarmaActiva = true;
-    this.Accelerometer();  
+    this.Accelerometer();
   }
 
   desactivar() {
@@ -159,87 +159,136 @@ export class HomePage {
     alertModalError.present();
 
   }
-//#endregion
+  //#endregion
 
-  
 
-  Accelerometer(){
 
-    let flag = true;
+  Accelerometer() {
+
+     let flag = true;
     let flagAcostado = false;
-    let flagIzq =  true;
+    let flagIzq = true;
     let flagDer = true;
     
+    let cont = 0;
+
     // Watch device acceleration
-    this.subscription = this.deviceMotion.watchAcceleration({frequency: 200}).subscribe((acceleration: DeviceMotionAccelerationData) => {
+    this.subscription = this.deviceMotion.watchAcceleration({ frequency: 200 }).subscribe((acceleration: DeviceMotionAccelerationData) => {
       console.log(acceleration);
-      this.accX=acceleration.x;
-      this.accY=acceleration.y;
-      this.accZ=acceleration.z;
+      this.accX = acceleration.x;
+      this.accY = acceleration.y;
+      this.accZ = acceleration.z;
+
+      // X
+      // en reposo: entre -1 y 1 sin incluir
+      // derecha: se vuelve menor o igual a -1
+      // izquierda: se vuelve mayor o igual a 1
+
+      // Y
+      // en reposo: entre -1 y 1 sin incluir
+      // de cabeza: se vuelve menor o igual a 1
+      // vertical: se vuelve mayor o igual a uno
+
+      //Horizontal
+  //     if (((this.accX < 1 && this.accX > -1) || (this.accY < 1 && this.accY > -1)) && cont > 3) {
+  //       // no lleva timer
+  //       this.audioHor.play();
+  //       this.vibration.vibrate(5000);
+  //       cont = 0;
+  //     }
+  //     //Derecha
+  //     if (this.accX <= -1) {
+  //       cont++;
+  //       this.audioDer.play();
+  //     }
+  //     //Izquierda
+  //     if (this.accX >= 1) {
+  //       cont++;
+  //       this.audioIzq.play();
+  //     }
+  //     //Vertical
+  //     if (this.accY <= -1 || this.accY >= 1) {
+  //       cont++;
+  //       this.audioVer.play();
+  //       this.flashlight.switchOn
+  //       timer(5000).subscribe(() => {
+  //         this.flashlight.switchOff
+  //       });
+
+  //     }
 
 
-      if ( this.accY < 1 && this.accX < 1 && this.accX > -1 &&  flagAcostado === true) {
-        flagAcostado = false;
-        timer(500).subscribe(() => {
-          if (this.accX < 3) {
-            this.audioHor.load();
-            this.audioHor.play();
-            flagAcostado = false;
-            this.vibration.vibrate(5000);
-          } 
-        });
-      } else if ( this.accY > 5 || this.accX > 5 || this.accX < -5  && flagAcostado === false ) {
-        flagAcostado = true;
-      }
-        // vertical y linterna
-        if(this.accY > 3 && flag == true){
-          flag = false;
-          this.flashlight.switchOn();
-          this.audioVer.load();
-          this.audioVer.play();
-          timer(5000).subscribe(() => {
-            if ( this.accY > 3) {
-              flag = false;
-              this.flashlight.switchOff();
-            }
-          });
-          } else if ( this.accY < 3  && flag === false ) {
-            this.flashlight.switchOff();
-            flag = true;
-          }
+
+
+      
+  //   });
+  // }
   
-        // izquierda
-        if ( this.accX > 3 && flagIzq === true) {
-            flagIzq = false;
-            timer(500).subscribe(() => {
-              if (this.accX > 3) {
-                flagIzq = false;
-                this.audioIzq.load();
-                this.audioIzq.play();
-              }
-            });
-        } else if ( this.accX < 3  && flagIzq === false ) {
-          flagIzq = true;
-        }
-  
-        // derecha
-        if ( this.accX < -3 && flagDer === true) {
-          flagDer = false;
-          timer(500).subscribe(() => {
-            if ( this.accX < -3 ) {
-              flagDer = false;
-              this.audioDer.load();
-              this.audioDer.play();
-            }
-  
-          });
-        } else if ( this.accX > -3  && flagDer === false) {
-          flagDer = true;
+  //#region Lógica Ale
+
+    if (this.accY < 1 && this.accX < 1 && this.accX > -1 && flagAcostado === true) {
+      flagAcostado = false;
+      timer(500).subscribe(() => {
+        if (this.accX < 3) {
+          this.audioHor.load();
+          this.audioHor.play();
+          flagAcostado = false;
+          this.vibration.vibrate(5000);
         }
       });
+    } else if (this.accY > 5 || this.accX > 5 || this.accX < -5 && flagAcostado === false) {
+      flagAcostado = true;
+    }
+    // vertical y linterna
+    if (this.accY > 3 && flag == true) {
+      flag = false;
+      this.flashlight.switchOn();
+      this.audioVer.load();
+      this.audioVer.play();
+      timer(5000).subscribe(() => {
+        if (this.accY > 3) {
+          flag = false;
+          this.flashlight.switchOff();
+        }
+      });
+    } else if (this.accY < 3 && flag === false) {
+      this.flashlight.switchOff();
+      flag = true;
+    }
+
+    // izquierda
+    if (this.accX > 3 && flagIzq === true) {
+      flagIzq = false;
+      timer(500).subscribe(() => {
+        if (this.accX > 3) {
+          flagIzq = false;
+          this.audioIzq.load();
+          this.audioIzq.play();
+        }
+      });
+    } else if (this.accX < 3 && flagIzq === false) {
+      flagIzq = true;
+    }
+
+    // derecha
+    if (this.accX < -3 && flagDer === true) {
+      flagDer = false;
+      timer(500).subscribe(() => {
+        if (this.accX < -3) {
+          flagDer = false;
+          this.audioDer.load();
+          this.audioDer.play();
+        }
+
+      });
+    } else if (this.accX > -3 && flagDer === false) {
+      flagDer = true;
+    }
+});
+}
   
-    
-  }
+  
+  //#endregion
 
 
 
@@ -250,7 +299,7 @@ export class HomePage {
   // //   let options: GyroscopeOptions = {
   // //     frequency: 1000
   // //  };
-   
+
   // //  this.gyroscope.getCurrent(options)
   // //    .then((orientation: GyroscopeOrientation) => {
   // //       console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
@@ -261,8 +310,8 @@ export class HomePage {
 
   // //     })
   // //    .catch()
-   
-   
+
+
   // //  this.gyroscope.watch()
   // //     .subscribe((orientation: GyroscopeOrientation) => {
   // //        console.log(orientation.x, orientation.y, orientation.z, orientation.timestamp);
