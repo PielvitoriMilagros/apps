@@ -44,7 +44,7 @@
 
 
 ion-button{
-  height: 200%;
+  height: 500%;
 }
 
 .botonera{
@@ -56,6 +56,14 @@ ion-button{
   
 }
 
+.fila{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5%;
+}
 
 
 
+ion-content{
+  --background: url('../../assets/inicio.png') no-repeat center center / cover;
+}

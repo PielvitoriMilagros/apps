@@ -25,9 +25,9 @@
         <ion-icon name="language-sharp"></ion-icon>
       </ion-fab-button>
       <ion-fab-list side="bottom">
-        <ion-fab-button><img style="width: 28px" src="../../assets/espania.png"></ion-fab-button>
-        <ion-fab-button><img style="width: 28px" src="../../assets/ingles.png"></ion-fab-button>
-        <ion-fab-button><img style="width: 28px" src="../../assets/portugal.png"></ion-fab-button>
+        <ion-fab-button (click)="seleccionaIdioma('E')"><img style="width: 28px" src="../../assets/espania.png"></ion-fab-button>
+        <ion-fab-button (click)="seleccionaIdioma('I')"><img style="width: 28px" src="../../assets/ingles.png"></ion-fab-button>
+        <ion-fab-button (click)="seleccionaIdioma('P')"><img style="width: 28px" src="../../assets/portugal.png"></ion-fab-button>
       </ion-fab-list>
     </ion-fab>
 
@@ -36,11 +36,11 @@
         <ion-icon name="newspaper-sharp"></ion-icon>
       </ion-fab-button>
       <ion-fab-list side="bottom">
-        <ion-fab-button (click)="activar('numeros')"><img style="width: 28px" src="../../assets/numeros.png">
+        <ion-fab-button (click)="seleccionaTema('numeros')"><img style="width: 28px" src="../../assets/numeros.png">
         </ion-fab-button>
-        <ion-fab-button (click)="activar('colores')"><img style="width: 28px" src="../../assets/colores.png">
+        <ion-fab-button (click)="seleccionaTema('colores')"><img style="width: 28px" src="../../assets/colores.png">
         </ion-fab-button>
-        <ion-fab-button (click)="activar('animales')"><img style="width: 28px" src="../../assets/animales.png">
+        <ion-fab-button (click)="seleccionaTema('animales')"><img style="width: 28px" src="../../assets/animales.png">
         </ion-fab-button>
       </ion-fab-list>
     </ion-fab>
@@ -49,17 +49,119 @@
 
   <div id="container">
 
-    <div *ngIf="animales" class="botonera">
+    <div *ngIf="animales">
+
+      <div class="fila">
+        <ion-button color="light" (click)="reproduceSonido('conejo')"><img width="60%" style="margin: 4%;" src="../../assets/animales/conejo.png"
+            alt="conejo"></ion-button>
+        <ion-button color="light" (click)="reproduceSonido('perro')"><img width="60%" style="margin: 4%;" src="../../assets/animales/perro.png"
+            alt="perro"></ion-button>
+      </div>
+      <div class="fila">
+        <ion-button color="light" (click)="reproduceSonido('gato')"><img width="60%" style="margin: 4%;" src="../../assets/animales/gato.png" alt="gato">
+        </ion-button>
+        <ion-button color="light" (click)="reproduceSonido('jirafa')"><img width="60%" style="margin: 4%;" src="../../assets/animales/jirafa.png"
+            alt="jirafa"></ion-button>
+      </div>
+      <div class="fila">
+        <ion-button color="light" (click)="reproduceSonido('oso')"><img width="60%" style="margin: 4%;" src="../../assets/animales/oso.png" alt="oso">
+        </ion-button>
+        <ion-button color="light" (click)="reproduceSonido('pajaro')"><img width="60%" style="margin: 4%;" src="../../assets/animales/pajaro.png"
+            alt="pajaro"></ion-button>
+      </div>
+    </div>
 
 
-      <!-- <img width="40%" style="margin: 4%;" src="../../assets/animales/conejo.png" alt="conejo">
+
+    <div *ngIf="colores">
+
+      <div class="fila">
+        <ion-button color="light" (click)="reproduceSonido('amarillo')"><img width="60%" style="margin: 4%;" src="../../assets/colores/amarillo.png"
+            alt="amarillo"></ion-button>
+        <ion-button color="light" (click)="reproduceSonido('azul')"><img width="60%" style="margin: 4%;" src="../../assets/colores/azul.png"
+            alt="azul"></ion-button>
+      </div>
+      <div class="fila">
+        <ion-button color="light" (click)="reproduceSonido('naranja')"><img width="60%" style="margin: 4%;" src="../../assets/colores/naranja.png" alt="naranja">
+        </ion-button>
+        <ion-button color="light" (click)="reproduceSonido('purpura')"><img width="60%" style="margin: 4%;" src="../../assets/colores/purpura.png"
+            alt="purpura"></ion-button>
+      </div>
+      <div class="fila">
+        <ion-button color="light" (click)="reproduceSonido('rojo')"><img width="60%" style="margin: 4%;" src="../../assets/colores/rojo.png" alt="rojo">
+        </ion-button>
+        <ion-button color="light" (click)="reproduceSonido('verde')"><img width="60%" style="margin: 4%;" src="../../assets/colores/verde.png"
+            alt="verde"></ion-button>
+      </div>
+    </div>
+
+
+    <div *ngIf="numeros">
+
+      <div class="fila">
+        <ion-button color="light" (click)="reproduceSonido('uno')"><img width="60%" style="margin: 4%;" src="../../assets/numeros/uno.png"
+            alt="uno"></ion-button>
+        <ion-button color="light" (click)="reproduceSonido('dos')"><img width="60%" style="margin: 4%;" src="../../assets/numeros/dos.png"
+            alt="dos"></ion-button>
+      </div>
+      <div class="fila">
+        <ion-button color="light" (click)="reproduceSonido('tres')"><img width="60%" style="margin: 4%;" src="../../assets/numeros/tres.png" alt="tres">
+        </ion-button>
+        <ion-button color="light" (click)="reproduceSonido('cuatro')"><img width="60%" style="margin: 4%;" src="../../assets/numeros/cuatro.png"
+            alt="cuatro"></ion-button>
+      </div>
+      <div class="fila">
+        <ion-button color="light" (click)="reproduceSonido('cinco')"><img width="60%" style="margin: 4%;" src="../../assets/numeros/cinco.png" alt="cinco">
+        </ion-button>
+        <ion-button color="light" (click)="reproduceSonido('seis')"><img width="60%" style="margin: 4%;" src="../../assets/numeros/seis.png"
+            alt="seis"></ion-button>
+      </div>
+    </div>
+
+
+<div class="idiomas">
+  
+    <div *ngIf="espaniol">
+      <div class="fila">
+        <img width="20%" class="drop" src="../../assets/espania.png" alt="ESPAÑOL">
+      </div>
+    </div>
+  
+    <div *ngIf="ingles">
+      <div class="fila">
+        <img width="30%" class="drop" src="../../assets/ingles.png" alt="INGLÉS">
+      </div>
+    </div>
+  
+    <div *ngIf="portugues">
+      <div class="fila">
+        <img width="20%" class="drop" src="../../assets/portugal.png" alt="PORTUGUES">
+      </div>
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+
+  </div>
+</ion-content>
+
+<!-- <img width="40%" style="margin: 4%;" src="../../assets/animales/conejo.png" alt="conejo">
       <img width="40%" style="margin: 4%;" src="../../assets/animales/perro.png" alt="perro">
       <img width="40%" style="margin: 4%;" src="../../assets/animales/gato.png" alt="gato">
       <img width="40%" style="margin: 4%;" src="../../assets/animales/jirafa.png" alt="jirafa">
       <img width="40%" style="margin: 4%;" src="../../assets/animales/oso.png" alt="oso">
       <img width="40%" style="margin: 4%;" src="../../assets/animales/pajaro.png" alt="pajaro"> -->
-      
-      <ion-grid>
+
+
+
+
+<!-- <ion-grid>
         <ion-row>
           <ion-col>
             <ion-button shape="round" fill="outline" size="large" class="centrado drop"><img width="70%" style="margin: 4%;"
@@ -92,9 +194,12 @@
               src="../../assets/animales/pajaro.png" alt="pajaro"></ion-button>
           </ion-col>
         </ion-row>
-      </ion-grid>
-      
-      <!-- <div class="button-bar">
+      </ion-grid> -->
+
+
+
+
+<!-- <div class="button-bar">
         <ion-button shape="round" fill="outline" size="large" class="centrado drop"><img width="40%" style="margin: 4%;"
             src="../../assets/animales/conejo.png" alt="conejo"></ion-button>
         <ion-button shape="round" fill="outline" size="large" class="centrado drop"><img width="40%" style="margin: 4%;"
@@ -115,21 +220,13 @@
             src="../../assets/animales/pajaro.png" alt="pajaro"></ion-button>
       </div> -->
 
-    </div>
-
-
-    <div *ngIf="colores">COLORES</div>
-    <div *ngIf="numeros">NUMEROS</div>
-
-  </div>
 
 
 
 
-  <!-- <div id="container">
+<!-- <div id="container">
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer"
         href="https://ionicframework.com/docs/components">UI Components</a></p>
     <h3>{{usuarioActivo}}</h3>
   </div> -->
-</ion-content>

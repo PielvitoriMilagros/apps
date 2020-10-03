@@ -18,6 +18,8 @@ import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './home/login/login.component';
 
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { LoginComponent } from './home/login/login.component';
   providers: [
     StatusBar,
     SplashScreen,
+    NativeAudio,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
