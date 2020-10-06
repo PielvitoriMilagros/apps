@@ -45,7 +45,7 @@ validarUsuario(){
   
   this.authService.iniciarSesion(this.usuario,this.clave).then(resp =>{
 
-    console.log(resp);
+    // console.log(resp);
     let aux=resp;
     this.router.navigate(['/home']);
 

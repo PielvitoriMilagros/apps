@@ -68,6 +68,7 @@ export class HomePage {
 }
 */
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 
 @Component({
@@ -77,7 +78,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage {
 
-constructor(private menu: MenuController) { }
+constructor(private menu: MenuController, private router:Router) { }
 
   openFirst() {
     this.menu.enable(true, 'first');
@@ -92,4 +93,10 @@ constructor(private menu: MenuController) { }
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
   }
+
+
+
+
+
+
 }

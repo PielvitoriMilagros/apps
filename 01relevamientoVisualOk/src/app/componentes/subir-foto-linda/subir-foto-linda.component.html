@@ -1,0 +1,56 @@
+<ion-header [translucent]="true" class="header">
+  <ion-toolbar color='medium'>
+      <ion-buttons slot="secondary">
+          <ion-button>
+              <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+          <ion-buttons slot="start">
+              <ion-menu-button menu="first"></ion-menu-button>
+          </ion-buttons>
+      <ion-title>Relevamiento Visual</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div class="container">
+
+
+    <div *ngFor="let item of imagen">
+      <img src="{{item}}" alt="">
+    </div>
+
+    <h2>prubando</h2>
+
+    <img src="{{imageURL}}" width="200">
+    {{imageURL}}
+
+    <!-- <ion-tab-button (click)="tomarFoto()">
+      <ion-icon name="camera"></ion-icon>
+      <ion-label>Photo</ion-label>
+    </ion-tab-button> -->
+
+    <!-- <ion-tab-button (click)="openCamera()">
+      <ion-icon name="camera"></ion-icon>
+      <ion-label>Photo</ion-label>
+    </ion-tab-button> -->
+
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="tomarFoto()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+
+
+
+<!-- BOTON PARA MAS
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="tomarFoto()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab> -->

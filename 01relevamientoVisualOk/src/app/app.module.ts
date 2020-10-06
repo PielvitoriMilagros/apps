@@ -19,16 +19,16 @@ import { environment } from '../environments/environment';
 
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './home/login/login.component';
-import { SubirFotoComponent } from './componentes/subir-foto/subir-foto.component';
 
-// import { Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { SubirFotoLindaComponent } from './componentes/subir-foto-linda/subir-foto-linda.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SubirFotoComponent
+    SubirFotoLindaComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -49,7 +49,7 @@ import { SubirFotoComponent } from './componentes/subir-foto/subir-foto.componen
   providers: [
     StatusBar,
     SplashScreen,
-    // Camera,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],
