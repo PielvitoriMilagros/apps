@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { AlertController, IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -22,13 +22,19 @@ import { LoginComponent } from './home/login/login.component';
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { SubirFotoLindaComponent } from './componentes/subir-foto-linda/subir-foto-linda.component';
+import { SubirFotoFeaComponent } from './componentes/subir-foto-fea/subir-foto-fea.component';
+import { ListadoComponent } from './componentes/listado/listado.component';
+import { MiGaleriaComponent } from './componentes/mi-galeria/mi-galeria.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SubirFotoLindaComponent
+    SubirFotoLindaComponent,
+    SubirFotoFeaComponent,
+    ListadoComponent,
+    MiGaleriaComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -49,6 +55,7 @@ import { SubirFotoLindaComponent } from './componentes/subir-foto-linda/subir-fo
   providers: [
     StatusBar,
     SplashScreen,
+    AlertController,
     Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

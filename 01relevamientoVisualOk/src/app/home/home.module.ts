@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { SubirFotoLindaComponent } from '../componentes/subir-foto-linda/subir-foto-linda.component';
 
 
 @NgModule({

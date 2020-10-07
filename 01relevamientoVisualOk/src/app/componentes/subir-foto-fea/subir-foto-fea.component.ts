@@ -8,12 +8,11 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-subir-foto-linda',
-  templateUrl: './subir-foto-linda.component.html',
-  styleUrls: ['./subir-foto-linda.component.scss'],
+  selector: 'app-subir-foto-fea',
+  templateUrl: './subir-foto-fea.component.html',
+  styleUrls: ['./subir-foto-fea.component.scss'],
 })
-export class SubirFotoLindaComponent implements OnInit {
-
+export class SubirFotoFeaComponent implements OnInit {
   imageURL: string;
   uid;
   ucorreo;
@@ -117,7 +116,7 @@ export class SubirFotoLindaComponent implements OnInit {
     for (let index = 0; index < this.imagenesParaCargar.length; index++) {
       const foto = this.imagenesParaCargar[index];
       
-      this.imgService.savePhoto(true,this.uid,this.ucorreo,foto).then(resp=>{
+      this.imgService.savePhoto(false,this.uid,this.ucorreo,foto).then(resp=>{
         console.log("SI");
       }).catch(error=>{
         console.log("NO");
@@ -168,6 +167,5 @@ export class SubirFotoLindaComponent implements OnInit {
 
 
   
-
 
 }

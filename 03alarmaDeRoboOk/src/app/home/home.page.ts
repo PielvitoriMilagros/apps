@@ -224,7 +224,7 @@ export class HomePage {
   //   });
   // }
   
-  //#region Lógica Ale
+  //#region Lógica
 
     if (this.accY < 1 && this.accX < 1 && this.accX > -1 && flagAcostado === true) {
       flagAcostado = false;

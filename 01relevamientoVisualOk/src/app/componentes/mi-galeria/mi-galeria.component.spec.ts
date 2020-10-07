@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SubirFotoLindaPage } from './subir-foto-linda.page';
+import { MiGaleriaComponent } from './mi-galeria.component';
 
-describe('SubirFotoLindaPage', () => {
-  let component: SubirFotoLindaPage;
-  let fixture: ComponentFixture<SubirFotoLindaPage>;
+describe('MiGaleriaComponent', () => {
+  let component: MiGaleriaComponent;
+  let fixture: ComponentFixture<MiGaleriaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubirFotoLindaPage ],
+      declarations: [ MiGaleriaComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SubirFotoLindaPage);
+    fixture = TestBed.createComponent(MiGaleriaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -5,9 +5,9 @@ export class Imagen {
     umail: string;
     image: string;
     // votos: Voto[];
-    votos: [] = [];
+    votos:[];
     key: string;
-    fecha: string;
+    fecha: Date;
 
 
 }
