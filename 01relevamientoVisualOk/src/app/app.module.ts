@@ -25,7 +25,10 @@ import { SubirFotoLindaComponent } from './componentes/subir-foto-linda/subir-fo
 import { SubirFotoFeaComponent } from './componentes/subir-foto-fea/subir-foto-fea.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { MiGaleriaComponent } from './componentes/mi-galeria/mi-galeria.component';
+import { ResultadosComponent } from './componentes/resultados/resultados.component';
 
+import { Chart } from "chart.js";
+import * as HighCharts from 'highcharts';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { MiGaleriaComponent } from './componentes/mi-galeria/mi-galeria.componen
     SubirFotoLindaComponent,
     SubirFotoFeaComponent,
     ListadoComponent,
-    MiGaleriaComponent
+    MiGaleriaComponent,
+    ResultadosComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

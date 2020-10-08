@@ -1,0 +1,164 @@
+<ion-header [translucent]="true" class="header">
+  <ion-toolbar color='medium'>
+      <ion-buttons slot="secondary">
+          <ion-button>
+              <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+          <ion-buttons slot="start">
+              <ion-menu-button menu="first"></ion-menu-button>
+          </ion-buttons>
+      <ion-title>Listado de Relevamientos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<ion-content>
+  
+  <div class="opciones">
+  <ion-button (click)="activarCategoria(true)" color="success" style="margin: 5%;">Cosas Lindas</ion-button>
+  <ion-button (click)="activarCategoria(false)" color="danger" style="margin: 5%;">Cosas Feas</ion-button>
+</div>
+
+
+
+
+<div *ngIf="cosasLindas">
+
+
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col>
+        <div>
+          <strong>Imagen</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Usuario</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Fecha</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Votos</strong>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of imagenesLindas">
+      <ion-col>
+        <div>
+          <img src="{{item.image}}" width="80px" alt="">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.umail}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.fecha}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.votada}}
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+
+</div>
+
+
+
+<div *ngIf="!cosasLindas">
+
+
+  <!-- <ion-list-header color="light">Simple Bar Chart</ion-list-header>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>Simple Bar Chart</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div id="highcharts" style="width:100%; height:400px;"></div>
+    </ion-card-content>
+  </ion-card> -->
+
+
+
+  <div id="container"></div>
+
+
+  
+  <!-- <ion-grid>
+    
+    <ion-row>
+      <ion-col>
+        <div>
+          <strong>Imagen</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Usuario</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Fecha</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Votos</strong>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of imagenesFeas">
+      <ion-col>
+        <div>
+          <img src="{{item.image}}" width="80px" alt="">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.umail}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.fecha}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.votada}}
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid> -->
+
+
+
+</div>
+
+
+
+
+</ion-content>
+

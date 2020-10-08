@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { MiGaleriaComponent } from './componentes/mi-galeria/mi-galeria.component';
+import { ResultadosComponent } from './componentes/resultados/resultados.component';
 import { SubirFotoFeaComponent } from './componentes/subir-foto-fea/subir-foto-fea.component';
 import { SubirFotoLindaComponent } from './componentes/subir-foto-linda/subir-foto-linda.component';
 import { AuthGuard } from './guard/auth.guard';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'subirFotoFea',component: SubirFotoFeaComponent},
   {path: 'listado',component: ListadoComponent},
   {path: 'miGaleria',component: MiGaleriaComponent},
+  {path: 'resultados',component: ResultadosComponent},
   // {path: 'registro',component: RegistroComponent},
   // {path: '',component: HomePage},
   {path:'**', pathMatch:'full' ,redirectTo:'home'},
