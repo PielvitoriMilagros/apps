@@ -8,6 +8,7 @@ export class Imagen {
     votos:[];
     key: string;
     fecha: Date;
+    votada:string;
 
 
 }

@@ -15,7 +15,89 @@
 
 <ion-content>
   
-  <table class="table table-striped">
+
+
+
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col>
+        <div>
+          <strong>Imagen</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Usuario</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Fecha</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Votar</strong>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of listadoImagenes">
+      <ion-col>
+        <div>
+          <img src="{{item.image}}" width="80px" alt="">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.umail}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.fecha}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div *ngIf="item.esLinda">
+          <div *ngIf="item.votada">
+            <ion-button disabled="true" color="success"><ion-icon name="star"></ion-icon></ion-button>
+          </div>
+          <div *ngIf="!item.votada">
+            <ion-button color="success" (click)="votar(item)"><ion-icon name="star"></ion-icon></ion-button>
+          </div>
+        </div>
+        <div *ngIf="!item.esLinda">
+          <div *ngIf="item.votada">
+            <ion-button disabled="true" color="danger"><ion-icon name="star"></ion-icon></ion-button>
+          </div>
+          <div *ngIf="!item.votada">
+            <ion-button color="danger" (click)="votar(item)"><ion-icon name="star"></ion-icon></ion-button>
+          </div>
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Imagen</th>
@@ -37,7 +119,7 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 
 </ion-content>

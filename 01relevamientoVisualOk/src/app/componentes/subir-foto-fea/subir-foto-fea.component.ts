@@ -24,9 +24,9 @@ export class SubirFotoFeaComponent implements OnInit {
 
   
   options: CameraOptions = {
-    // quality: 100,
+    // quality: 50,
     sourceType: this.camera.PictureSourceType.CAMERA,
-    destinationType: this.camera.DestinationType.FILE_URI
+    destinationType: this.camera.DestinationType.DATA_URL,
     // encodingType: this.camera.EncodingType.JPEG,
     // mediaType: this.camera.MediaType.PICTURE
   }
@@ -94,7 +94,7 @@ export class SubirFotoFeaComponent implements OnInit {
   tomarFoto() {
     this.camera.getPicture(this.options).then((imageData) => {
 
-      this.imageURL = 'data:image/jpeg;base64,' + imageData;
+      this.imageURL = 'data:image/jpg;base64,' + imageData;
 
       if(imageData !== 'No Image Selected'){
         this.imagenesParaCargar.push(this.imageURL);
@@ -109,7 +109,14 @@ export class SubirFotoFeaComponent implements OnInit {
 
   }
 
-
+// guardarFoto(foto){
+//   this.imgService.savePhoto(false,this.uid,this.ucorreo,foto).then(resp=>{
+//     console.log("SI");
+//   }).catch(error=>{
+//     console.log("NO");
+//     console.log(error);
+//   });
+// }
 
   guardarFotos(){
 
@@ -126,8 +133,6 @@ export class SubirFotoFeaComponent implements OnInit {
     }
 
     this.listoCarga=true;
-    // this.router.navigate['/home'];
-
 
   }
 

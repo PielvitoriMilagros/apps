@@ -1,27 +1,76 @@
 <ion-header [translucent]="true" class="header">
   <ion-toolbar color='medium'>
-      <ion-buttons slot="secondary">
-          <ion-button>
-              <ion-icon slot="icon-only" name="person-circle"></ion-icon>
-          </ion-button>
-      </ion-buttons>
-          <ion-buttons slot="start">
-              <ion-menu-button menu="first"></ion-menu-button>
-          </ion-buttons>
-      <ion-title>Listado de Relevamientos</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Listado de Relevamientos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  
-  <table class="table table-striped">
+
+
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col>
+        <div>
+          <strong>Imagen</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Usuario</strong>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <strong>Fecha</strong>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of listadoImagenes">
+      <ion-col>
+        <div>
+          <img src="{{item.image}}" width="80px" alt="">
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.umail}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          {{item.fecha}}
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+
+
+
+
+
+
+
+
+  <!-- <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Imagen</th>
         <th scope="col">Usuario</th>
         <th scope="col">Fecha</th>
-        <th scope="col">Votar</th>
       </tr>
     </thead>
     <tbody>
@@ -30,14 +79,18 @@
         <td>{{item.umail}}</td>
         <td>{{item.fecha}}</td>
         <td *ngIf="item.esLinda">
-          <ion-button color="success"><ion-icon name="star"></ion-icon></ion-button>
-      </td>
-      <td *ngIf="!item.esLinda">
-        <ion-button color="danger"><ion-icon name="star"></ion-icon></ion-button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+          <ion-button color="success">
+            <ion-icon name="star"></ion-icon>
+          </ion-button>
+        </td>
+        <td *ngIf="!item.esLinda">
+          <ion-button color="danger">
+            <ion-icon name="star"></ion-icon>
+          </ion-button>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
 
 
 </ion-content>
