@@ -1,0 +1,14 @@
+body{
+    background: url('../../../assets/fondoCuartoA.png')  no-repeat center center / cover;
+}
+
+ion-toolbar{
+    --background: rgb(187, 187, 0);
+    color: white;
+}
+
+ion-content{
+    --background: url('../../../assets/fondoCuartoA.png')  no-repeat center center / cover;
+}
+
+

@@ -16,13 +16,13 @@
       }
 
       body{
-          background: rgb(255, 250, 228);
+        background: url('../../../assets/fondoSplash.png')  no-repeat center center / cover;
       }
 
 .card{
     // --background:  rgb(17, 185, 193);
     // background: rgba(56, 115, 175, 0.767);
-    background: rgb(250, 239, 189);
+    background: rgba(255, 255, 255, 0.322);
 }
 
 .error{

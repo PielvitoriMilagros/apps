@@ -17,12 +17,16 @@ import { environment } from '../environments/environment';
 
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './home/login/login.component';
+import { SalaCuartoAComponent } from './componentes/sala-cuarto-a/sala-cuarto-a.component';
+import { SalaCuartoBComponent } from './componentes/sala-cuarto-b/sala-cuarto-b.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SalaCuartoAComponent,
+    SalaCuartoBComponent
   ],
   entryComponents: [],
   imports: [
