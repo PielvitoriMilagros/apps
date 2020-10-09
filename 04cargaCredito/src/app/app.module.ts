@@ -18,6 +18,8 @@ import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './home/login/login.component';
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { LoginComponent } from './home/login/login.component';
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Carga de créditos mediante QR
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,15 +9,61 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Carga de créditos mediante QR</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
 
-    
+    <ion-card *ngIf="mostrarError" class="error">
+      <ion-card-header>
+        <ion-title class="titulo">Error</ion-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{mensaje}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="mostrarMensaje" class="exito">
+      <ion-card-header>
+        <ion-title class="titulo">Éxito</ion-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{mensaje}}
+      </ion-card-content>
+    </ion-card>
+
+
+
+    <img src="../../assets/icono4color.png" width="50%" style="display: block; margin: auto;" alt=""
+      class="pulsate-fwd">
+
+    <div class="row">
+      <h4><strong>USUARIO: </strong> {{ucorreo}}</h4>
+    </div>
+    <div class="row">
+      <h4><strong>CRÉDITO: </strong> {{creditoTotal}}</h4>
+    </div>
+
+    <!-- PARA PROBAR -->
+    <!-- <ion-button color="warning" (click)="simularCarga('10')" >SIMULA 10</ion-button>
+    <ion-button color="warning" (click)="simularCarga('50')" >SIMULA 50</ion-button>
+    <ion-button color="warning" (click)="simularCarga('100')" >SIMULA 100</ion-button> -->
+
+    <ion-button (click)="escanear()" size="large" style="margin-top: 4%;">ESCANEAR NUEVO QR</ion-button>
+    <ion-button (click)="limpiarCreditos()" color="danger" size="small" style="margin: 5%; margin-top: 4%;">LIMPIAR CRÉDITOS CARGADOS</ion-button>
+
+
+
+
+
+
+     <!-- <p>Text: {{datoLeido}}</p> -->
+   <!-- <p>Formato: {{formatoLeido}}</p>
+    <p>Cancelled: {{canceladoLeido}}</p> -->
+
+
+
   </div>
 
 
