@@ -1,0 +1,115 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Administración de usuarios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+
+  <img style="display: block; margin: auto;" src="../../assets/icono6colorMini.png" width="50%" alt="">
+
+    <h2 class="titulo">
+      LISTADO DE USUARIOS
+    </h2>
+
+
+    <ion-grid class="grilla">
+
+      <ion-row class="titulos">
+        <ion-col size="3">
+          <div>
+            <strong>Apellido</strong>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            <strong>Nombre</strong>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            <strong>DNI</strong>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            <strong>Correo</strong>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let item of listadoUsuarios">
+        <ion-col size="3">
+          <div>
+            {{item.apellido}}
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{item.nombre}}
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{item.dni}}
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{item.correo}}
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+
+
+ 
+      <div *ngIf="esAdmin">
+        <ion-button style="margin-top: 4%;" size="large" [routerLink]="['/registro']" expand="block" color="success">
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </div>
+
+      
+      <ion-button style="margin-top: 4%;" size="large" [routerLink]="['/login']" color="danger">
+        <ion-icon name="arrow-back-circle"></ion-icon>
+      </ion-button>
+      
+      
+      
+    </div>
+    
+    
+  </ion-content>
+  
+
+
+
+
+
+
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    
+    
+  </div>
+
+
+</ion-content> -->
