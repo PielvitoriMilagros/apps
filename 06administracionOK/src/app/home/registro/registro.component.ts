@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/clases/usuario';
 import { AuthenticationService } from 'src/app/servicios/authentication.service';
+import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-// import { Plugins } from '@':
+
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss'],
 })
+
 export class RegistroComponent implements OnInit {
 
   public usuarioActivo;
@@ -31,22 +32,12 @@ export class RegistroComponent implements OnInit {
 
   types = ["PDF417", "QR Code"];
 
-  options = {
-    beep : true,  // Beep on
-    noDialog : true, // Skip confirm dialog after scan
-    uncertain : false, //Recommended
-    quietZone : false, //Recommended
-    highRes : false, //Recommended
-    inverseScanning: false,
-    frontFace : false
-};
 
-licenseAndroid = "sRwAAAAQbW9iaS5wZGY0MTcuZGVtb2uCzTSwE5Pixw1pJL5UEN7nyXbOdXB61Ysy/sgAYt4SaB0T/g6JvisLn6HtB8LzLDmpFjULMxmB8iLsy3tFdHtMhLWOM6pr0tQmSLGyhrXfe6rVoHAxJtPrFEoCNTk4RjLltQ==";
 
   constructor(private router:Router,
     private auth:AuthenticationService,
     private userServ:UsuariosService,
-    private escaner: BarcodeScanner) { 
+    private escaner:BarcodeScanner) { 
 
       auth.currentUser().then(resp=>{
         if(resp != null)
@@ -58,6 +49,17 @@ licenseAndroid = "sRwAAAAQbW9iaS5wZGY0MTcuZGVtb2uCzTSwE5Pixw1pJL5UEN7nyXbOdXB61Y
 
 
     }
+
+
+    
+  options: BarcodeScannerOptions = {
+    //prompt : "Escaneando", // Android
+    resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+    formats : "PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+    orientation : "portrait", // Android only (portrait|landscape), default unset so it rotates with the device
+    disableAnimations : true, // iOS
+    disableSuccessBeep: false // iOS and Android
+  };
 
 
   ngOnInit() {}
@@ -110,18 +112,22 @@ licenseAndroid = "sRwAAAAQbW9iaS5wZGY0MTcuZGVtb2uCzTSwE5Pixw1pJL5UEN7nyXbOdXB61Y
   }
 
 
-escanear(){
+ escanear(){
   
-  this.escaner.scan().then(barcodeData =>{
+  this.escaner.scan(this.options).then(barcodeData =>{
     this.datoLeido = barcodeData.text;
     this.formatoLeido = barcodeData.format;
+    let probando = this.datoLeido.split('@');
+    this.apellido=probando[1];
+    this.nombre=probando[2];
+    this.dni=probando[4];
+
   }).catch(err => {
       console.log('Error', err);
       this.datoLeido = err;
     });
 
-
-}
+ }
 
 
 

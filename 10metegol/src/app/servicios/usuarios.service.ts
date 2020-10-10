@@ -26,6 +26,13 @@ export class UsuariosService {
     });
   }
 
+  saveJugador(jugador, coleccion) {
+    console.log("saveJ");
+    return this.firestore.collection(coleccion).doc(jugador).set({
+      ganados: 0
+    });
+  }
+
 
 
 

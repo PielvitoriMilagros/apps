@@ -40,8 +40,10 @@ export class HomePage {
             array.push(usu);
           }
           array.sort(function (a, b) {
+            console.log(a.apellido, '   ' ,b.apellido);
+            console.log(a.apellido - b.apellido);
             // return new Date(a.fecha.substr(0, 19).trim()).getTime() - new Date(b.fecha.substr(0, 19).trim()).getTime();
-            return (a.apellido - b.apellido)
+            return (a.apellido < b.apellido ? -1 : 1)
           });
           
           this.listadoUsuarios = array;

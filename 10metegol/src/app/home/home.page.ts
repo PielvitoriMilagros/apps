@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Jugador } from '../clases/jugador';
 import { Partido } from '../clases/partido';
-import { Usuario } from '../clases/usuario';
 import { AuthenticationService } from '../servicios/authentication.service';
 import { UsuariosService } from '../servicios/usuarios.service';
 
@@ -47,13 +47,37 @@ export class HomePage {
           array.sort(function (a, b) {
             return new Date(b.fecha.substr(0, 19).trim()).getTime() - new Date(a.fecha.substr(0, 19).trim()).getTime();
           });
-          
+          console.log(this.listadoPartidos);
           this.listadoPartidos = array;
+          console.log(this.listadoPartidos);
+        });
+
+        
+        userServ.getJugadores().subscribe((resJug:any)=>{
+          let jugador;
+          console.log(resJug);
+          let arrayJ = new Array();
+          this.listadoJugadores=[];
+          for (let index = 0; index < resJug.length; index++) {
+            const element = resJug[index];
+            jugador=new Jugador();
+            jugador.id = jugador.payload.doc.id;
+            jugador.ganados = jugador.payload.doc.data().ganados;
+            
+            arrayJ.push(jugador);
+          }
+          arrayJ.sort(function (a, b) {
+            // return new Date(b.fecha.substr(0, 19).trim()).getTime() - new Date(a.fecha.substr(0, 19).trim()).getTime();
+            return ( b.ganados - a.ganados );
+          });
+          
+          this.listadoJugadores = arrayJ;
         });
         
         
-        
       }else console.log("no hay usuario");
+
+
     }).catch(error=>{
       this.usuarioActivo = false;
   

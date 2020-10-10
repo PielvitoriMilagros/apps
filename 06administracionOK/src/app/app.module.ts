@@ -17,20 +17,15 @@ import { environment } from '../environments/environment';
 
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './home/login/login.component';
-import { SalaCuartoAComponent } from './componentes/sala-cuarto-a/sala-cuarto-a.component';
-import { SalaCuartoBComponent } from './componentes/sala-cuarto-b/sala-cuarto-b.component';
 import { RegistroComponent } from './home/registro/registro.component';
 
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-
+import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistroComponent,
-    SalaCuartoAComponent,
-    SalaCuartoBComponent
+    RegistroComponent
   ],
   entryComponents: [],
   imports: [
