@@ -1,0 +1,146 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Partidos de Metegol
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+
+  <!-- <img style="display: block; margin: auto;" src="../../assets/icono10colorMini.png" width="50%" alt=""> -->
+
+    <h2 class="titulo">
+      LISTADO DE PARTIDOS
+    </h2>
+
+
+    <ion-grid class="grilla">
+
+      <ion-row class="titulos">
+        <ion-col size="3">
+          <div>
+            <strong>Jugador</strong>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            <strong>Resultado</strong>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            <strong>Jugador</strong>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            <strong>Fecha</strong>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let item of listadoPartidos">
+        <ion-col size="3">
+          <div>
+            {{item.jugadorUno}}
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div *ngIf="item.finalizado==true">
+            {{item.golesUno}} - {{item.golesDos}}
+          </div>
+          <div *ngIf="item.finalizado==false">
+            <div *ngIf="esAdmin">
+              <ion-button size="small" color="warning">Registrar</ion-button>
+            </div>
+            <div *ngIf="!esAdmin">
+              <ion-button size="small" color="warning" disabled="true">Pendiente</ion-button>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{item.jugadorDos}}
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            {{item.fecha}}
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+
+
+ 
+      <div *ngIf="esAdmin">
+        <ion-button style="margin-top: 4%;" size="large" [routerLink]="['/registro']" expand="block" color="primary">
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </div>
+
+      
+      <ion-button style="margin-top: 4%;" size="large" [routerLink]="['/login']" color="danger">
+        <ion-icon name="arrow-back-circle"></ion-icon>
+      </ion-button>
+      
+
+
+
+      
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Ganadores</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          
+          <div>
+
+        <ion-item>
+          <ion-icon name="walk" slot="start"></ion-icon>
+          <ion-label>Card Button Item 2</ion-label>
+        </ion-item>
+      </div>
+      </ion-card-content>
+      </ion-card> 
+      
+      
+
+      
+      
+      
+    </div>
+    
+    
+  </ion-content>
+  
+
+
+
+
+
+
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    
+    
+  </div>
+
+
+</ion-content> -->

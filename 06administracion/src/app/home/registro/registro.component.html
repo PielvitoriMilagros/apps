@@ -59,9 +59,9 @@
             </ion-item>
           </div>
 
-          <ion-button style="margin-bottom: 5%;" size="large" expand="block" color="success" (click)="validarRegistro()">
+          <ion-button id="registroButton" style="margin-bottom: 5%;" size="large" expand="block" color="success" (click)="validarRegistro()">
             Registrar Usuario</ion-button>
-          <ion-button color="danger" size="small" expand="block" href="home">Volver</ion-button>
+          <ion-button color="danger" size="small" expand="block" [routerLink]="['/home']">Volver</ion-button>
         </ion-card-content>
       </ion-card>
 
@@ -85,6 +85,12 @@
 
 
     </form>
+
+
+    <ion-button (click)="escanear()" size="large" color="warning">CARGAR DATOS  <ion-icon name="qr-code-outline"></ion-icon></ion-button>
+
+    {{datoLeido}}
+    {{formatoLeido}}
 
   </div>
 

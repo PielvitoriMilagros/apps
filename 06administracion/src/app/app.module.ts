@@ -21,6 +21,8 @@ import { SalaCuartoAComponent } from './componentes/sala-cuarto-a/sala-cuarto-a.
 import { SalaCuartoBComponent } from './componentes/sala-cuarto-b/sala-cuarto-b.component';
 import { RegistroComponent } from './home/registro/registro.component';
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { RegistroComponent } from './home/registro/registro.component';
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

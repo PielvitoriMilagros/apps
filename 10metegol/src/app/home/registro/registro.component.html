@@ -1,0 +1,76 @@
+<body class="centrado">
+
+
+
+
+  <div id="container">
+
+    <form>
+      <ion-card class="ion-text-center card">
+        <ion-card-header>
+          <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+          <ion-card-title class="titulo">REGISTRAR NUEVO PARTIDO</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+
+          <div class="form-group row">
+            <ion-item style="margin-bottom: 3%;">
+              <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+              <ion-input type="text" class="form-control" placeholder="Ingrese nombre del primer jugador"
+                [(ngModel)]="jugadorUno" name="jugadorUno"></ion-input>
+            </ion-item>
+          </div>
+
+          <img class="rotate-center" src="../../../assets/pelota.png" alt="" width="55%" style="margin: 1%; opacity: 60%;">
+
+          <div class="form-group row">
+            <ion-item style="margin-bottom: 3%;">
+              <ion-icon name="person-circle" slot="start"></ion-icon>
+              <ion-input type="text" class="form-control" placeholder="Ingrese nombre del segundo jugador"
+                [(ngModel)]="jugadorDos" name="jugadorDos"></ion-input>
+            </ion-item>
+          </div>
+          <div class="form-group row">
+            <ion-item style="margin-bottom: 3%;">
+              <ion-icon name="calendar-outline"></ion-icon>
+              <ion-input type="date" class="form-control" placeholder="Ingrese fecha del encuentro"
+                [(ngModel)]="fecha" name="fecha"></ion-input>
+            </ion-item>
+          </div>
+
+
+          <ion-button id="registroButton" style="margin-bottom: 5%;" size="large" expand="block" color="success" (click)="validarRegistro()">
+            Registrar Partido</ion-button>
+          <ion-button color="danger" size="small" expand="block" [routerLink]="['/home']">Volver</ion-button>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="mostrarError" class="error">
+        <ion-card-header>
+          <ion-title class="titulo">Error</ion-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{mensaje}}
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="mostrarMensaje" class="exito">
+        <ion-card-header>
+          <ion-title class="titulo">Éxito</ion-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{mensaje}}
+        </ion-card-content>
+      </ion-card>
+
+
+    </form>
+
+
+    <!-- <ion-button (click)="escanear()" size="large" color="warning">CARGAR DATOS  <ion-icon name="qr-code-outline"></ion-icon></ion-button> -->
+
+
+  </div>
+
+</body>

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/clases/usuario';
 import { AuthenticationService } from 'src/app/servicios/authentication.service';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+// import { Plugins } from '@':
 
 @Component({
   selector: 'app-registro',
@@ -24,11 +26,27 @@ export class RegistroComponent implements OnInit {
   public clave;
   public claveDos;
 
+  public datoLeido;
+  public formatoLeido;
 
+  types = ["PDF417", "QR Code"];
+
+  options = {
+    beep : true,  // Beep on
+    noDialog : true, // Skip confirm dialog after scan
+    uncertain : false, //Recommended
+    quietZone : false, //Recommended
+    highRes : false, //Recommended
+    inverseScanning: false,
+    frontFace : false
+};
+
+licenseAndroid = "sRwAAAAQbW9iaS5wZGY0MTcuZGVtb2uCzTSwE5Pixw1pJL5UEN7nyXbOdXB61Ysy/sgAYt4SaB0T/g6JvisLn6HtB8LzLDmpFjULMxmB8iLsy3tFdHtMhLWOM6pr0tQmSLGyhrXfe6rVoHAxJtPrFEoCNTk4RjLltQ==";
 
   constructor(private router:Router,
     private auth:AuthenticationService,
-    private userServ:UsuariosService) { 
+    private userServ:UsuariosService,
+    private escaner: BarcodeScanner) { 
 
       auth.currentUser().then(resp=>{
         if(resp != null)
@@ -92,8 +110,21 @@ export class RegistroComponent implements OnInit {
   }
 
 
-
+escanear(){
   
+  this.escaner.scan().then(barcodeData =>{
+    this.datoLeido = barcodeData.text;
+    this.formatoLeido = barcodeData.format;
+  }).catch(err => {
+      console.log('Error', err);
+      this.datoLeido = err;
+    });
+
+
+}
+
+
+
 
 
   mostrarNotificacion(exito, msj,opcion=null) {
